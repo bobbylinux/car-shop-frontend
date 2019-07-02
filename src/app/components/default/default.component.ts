@@ -1,9 +1,39 @@
 import { Component, OnInit } from "@angular/core";
+import {Car} from 'src/app/models/car';
+import {CarService} from 'src/app/services/car.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: "default",
-  templateUrl: "./default.component.html"
+  templateUrl: "./default.component.html",
+  providers: [UserService, CarService]
 })
-export class DefaultComponent {
-    title = "Home Page";
+export class DefaultComponent implements OnInit {
+  
+    private title: string;
+    public cars: Array<Car>;
+
+    constructor(
+      private _route: ActivatedRoute,
+      private _router: Router,
+      private _userService: UserService,
+      private _carService: CarService
+    ) {
+      this.title = "Home Page";
+    }
+
+    ngOnInit(): void {
+      console.log("default.component caricato correttamente");
+      this._carService.getCars().subscribe(
+        response => {
+            if (response.status == "success") {
+              this.cars = response.cars;
+            }
+        }, 
+        error => {
+          console.log(<any>error);
+        }
+      )
+    }
 }

@@ -20,4 +20,20 @@ export class CarService {
       .set("Authorization", token);
     return this._http.post(this.url + "cars", params, { headers: headers });
   }
+
+  getCars(): Observable<any> {
+    let headers = new HttpHeaders().set(
+      "Content-Type",
+      "application/x-www-form-urlencoded"
+    );
+    return this._http.get(this.url + "cars", { headers: headers });
+  }
+
+  getCar(id:number): Observable<any> {
+    let headers = new HttpHeaders().set(
+      "Content-Type",
+      "application/x-www-form-urlencoded"
+    );
+    return this._http.get(this.url + "cars/" + id, { headers: headers });
+  }
 }

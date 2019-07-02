@@ -14,8 +14,8 @@ const routes: Routes = [
     {path: 'logout/:sure', component: LoginComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'create-car', component: CarNewComponent},
-    {path: 'create-edit', component: CarEditComponent},
-    {path: 'create-detatil', component: CarDetailComponent},
+    {path: 'edit-car/:id', component: CarEditComponent},
+    {path: 'car-detail/:id', component: CarDetailComponent},
     {path: '**', component: DefaultComponent}
 ];
 
