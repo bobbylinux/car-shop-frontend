@@ -12,7 +12,7 @@ import { User } from "src/app/models/user";
   providers: [UserService, CarService]
 })
 export class CarNewComponent implements OnInit {
-  private title: string;
+  private pageTitle: string;
   public token: string;
   public identity: User;
   public car: Car;
@@ -25,7 +25,7 @@ export class CarNewComponent implements OnInit {
     private _userService: UserService,
     private _carService: CarService
   ) {
-    this.title = "Creare nuova auto";
+    this.pageTitle = "Creare nuova auto";
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
   }
